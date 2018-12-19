@@ -1,0 +1,13 @@
+module.exports = `
+  type Leaf {
+    name: String!
+  }
+  type Tree {
+    name: String!
+    leafs: [Leaf]!
+  }
+  type Query {
+    tree: Tree!
+    hello: String!
+  }
+`

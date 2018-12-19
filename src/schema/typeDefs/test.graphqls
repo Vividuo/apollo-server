@@ -1,0 +1,68 @@
+module.exports = `
+  type Guide {
+    id: ID!
+    guideTitle: String
+    remark: Remark
+    subjects: [Subject]
+  }
+  type Subject {
+    id: ID!
+    categories: [Category]
+    remark: Remark
+  }
+  type Category {
+    id: ID!
+    remark: Remark
+  }
+  type Remark {
+    id: ID!
+  }
+  type Rocket {
+    id: ID!
+    name: String
+    type: String
+  }
+
+  type User {
+    id: ID!
+    email: String!
+    trips: [Launch]!
+  }
+
+  type Mission {
+    name: String
+    missionPatch(size: PatchSize): String
+  }
+
+  enum PatchSize {
+    SMALL
+    LARGE
+  }
+  
+  type Launch {
+    id: ID!                        
+    site: String
+    mission: Mission
+    rocket: Rocket
+    isBooked: Boolean!
+  }
+  
+  type Parent {
+    id: ID,
+    count: Int,
+    score: Float,
+    isDefault: Boolean
+    name: String
+    friends: [Int]
+    launches: [Launch]!
+  }
+  type Child {
+    childName1: String
+  }
+  extend type Query {
+    """
+    This is the parent query description3
+    """
+    parent: Parent
+  }
+`
